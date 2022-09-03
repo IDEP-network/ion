@@ -42,9 +42,9 @@ build_tags_comma_sep := $(subst $(whitespace),$(comma),$(build_tags))
 
 # process linker flags
 
-ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=idep \
-		  -X github.com/cosmos/cosmos-sdk/version.ServerName=iond \
-		  -X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
+ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=iiond \
+		  -X github.com/cosmos/cosmos-sdk/version.AppName=iond \
+		  -X github.com/cosmos/cosmos-sdk/version.Version=v1.0.0 \
 		  -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
 		  -X "github.com/cosmos/cosmos-sdk/version.BuildTags=$(build_tags_comma_sep)"
 
@@ -58,7 +58,7 @@ BUILD_FLAGS := -tags "$(build_tags)" -ldflags '$(ldflags)'
 
 #### Command List ####
 
-all: lint install
+all: install
 
 install: go.sum
 		go install $(BUILD_FLAGS) ./cmd/iond
